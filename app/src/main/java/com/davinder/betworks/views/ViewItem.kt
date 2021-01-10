@@ -8,6 +8,13 @@ sealed class ViewItem {
 
         override fun getViewType() = EDIT_TEXT
 
+        fun validate(): Boolean {
+            return validatorRegex.matches(value)
+        }
+
+        companion object {
+            val validatorRegex = "^(?=.*\\d)(?=.*[a-zA-Z]).{2,}\$".toRegex()
+        }
     }
     
     data class ButtonViewItem(val id: String, var text: String) : ViewItem() {
