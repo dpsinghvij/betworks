@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.davinder.betworks.views.InputEditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="@dimen/view_height"
+    android:background="@drawable/edit_box"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    />

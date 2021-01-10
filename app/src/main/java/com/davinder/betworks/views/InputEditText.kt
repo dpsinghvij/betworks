@@ -16,6 +16,8 @@ class InputEditText @JvmOverloads constructor(
 
     fun setData(viewItem: ViewItem.InputViewItem) {
         this.viewItem = viewItem
+        hint = viewItem.hint
+        setText(viewItem.value)
     }
 
     private val textChangeListener: TextWatcher = object : TextWatcher {

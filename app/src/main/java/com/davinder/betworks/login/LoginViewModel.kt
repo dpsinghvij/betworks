@@ -16,7 +16,7 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         get() = _viewItems
 
     fun setUp() {
-        _viewItems.value = mutableListOf(InputViewItem(id= "username", hint = "User Name", value = ""),
+        _viewItems.value = mutableListOf(InputViewItem(id= "username", hint = "Username", value = ""),
             InputViewItem(id= "password", hint = "Password", value = ""),
             ViewItem.ButtonViewItem(id = "loginbutton", text = "Login")
             )
