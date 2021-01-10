@@ -1,13 +1,10 @@
 package com.davinder.betworks.login
 
-import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.davinder.betworks.views.InputEditText
 import com.davinder.betworks.views.ViewItem
 import com.davinder.betworks.views.ViewItem.InputViewItem
-import javax.inject.Inject
 
 class LoginViewModel (val viewItemList: List<ViewItem>) : ViewModel() {
 
