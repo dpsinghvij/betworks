@@ -25,6 +25,10 @@ class LoginAdapter(var viewItems: List<ViewItem>): RecyclerView.Adapter<Recycler
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return viewItems[position].getViewType()
+    }
+
     override fun getItemCount(): Int = viewItems.size
 
     class InputEditTextHolder(private val editText: InputEditText): RecyclerView.ViewHolder(editText) {
