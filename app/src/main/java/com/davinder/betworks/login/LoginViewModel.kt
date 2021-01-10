@@ -9,16 +9,27 @@ import com.davinder.betworks.views.ViewItem
 import com.davinder.betworks.views.ViewItem.InputViewItem
 import javax.inject.Inject
 
-class LoginViewModel @Inject constructor() : ViewModel() {
+class LoginViewModel (val viewItemList: List<ViewItem>) : ViewModel() {
 
     private var _viewItems = MutableLiveData<List<ViewItem>>()
     val viewItems: LiveData<List<ViewItem>>
         get() = _viewItems
 
+    private var _validationError = MutableLiveData<Boolean>()
+    val validationError: LiveData<Boolean>
+        get() = _validationError
+
     fun setUp() {
-        _viewItems.value = mutableListOf(InputViewItem(id= "username", hint = "Username", value = ""),
-            InputViewItem(id= "password", hint = "Password", value = ""),
-            ViewItem.ButtonViewItem(id = "loginbutton", text = "Login")
-            )
+        _viewItems.value = viewItemList
     }
+
+    fun validateUsernameAndPassword() {
+        val count = _viewItems.value?.filterIsInstance<InputViewItem>()
+            ?.filter { it.validate() }
+            ?.count() ?: 0
+
+        _validationError.value = count == 2
+    }
+
+
 }
