@@ -8,18 +8,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.davinder.betworks.R
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class UserScreenFragment : Fragment() {
 
-    
+    @Inject
+    lateinit var viewModel: UserScreenViewModel
+
+    val username: TextView? by lazy {
+        view?.findViewById(R.id.username) as? TextView
+    }
+
     companion object {
         fun newInstance() = UserScreenFragment()
     }
 
-    private lateinit var viewModel: UserScreenViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,10 +35,16 @@ class UserScreenFragment : Fragment() {
         return inflater.inflate(R.layout.user_screen_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(UserScreenViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.showUserData()
+
+        observeUsername()
     }
 
+    private fun observeUsername() {
+        viewModel.username.observe(viewLifecycleOwner) {
+            username?.text = it
+        }
+    }
 }
