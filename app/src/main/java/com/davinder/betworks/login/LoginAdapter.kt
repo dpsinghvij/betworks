@@ -8,7 +8,7 @@ import com.davinder.betworks.R
 import com.davinder.betworks.views.InputEditText
 import com.davinder.betworks.views.ViewItem
 
-class LoginAdapter(var viewItems: List<ViewItem>) :
+class LoginAdapter(var viewItems: List<ViewItem>, private val buttonClick: () -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -22,7 +22,7 @@ class LoginAdapter(var viewItems: List<ViewItem>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewItem = viewItems[position]
         when (holder) {
-            is LoginButtonHolder -> holder.bind(viewItem)
+            is LoginButtonHolder -> holder.bind(viewItem, buttonClick)
             is InputEditTextHolder -> holder.bind(viewItem)
         }
     }
@@ -52,9 +52,13 @@ class LoginAdapter(var viewItems: List<ViewItem>) :
     }
 
     class LoginButtonHolder(private val button: Button) : RecyclerView.ViewHolder(button) {
-        fun bind(item: ViewItem) {
+        fun bind(item: ViewItem, buttonClick: () -> Unit) {
             (item as? ViewItem.ButtonViewItem)?.let {
                 button.text = item.text
+
+                button.setOnClickListener {
+                    buttonClick()
+                }
             }
         }
 

@@ -5,16 +5,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.davinder.betworks.views.ViewItem
 import com.davinder.betworks.views.ViewItem.InputViewItem
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class LoginViewModel (val viewItemList: List<ViewItem>) : ViewModel() {
+class LoginViewModel(
+    private val viewItemList: List<ViewItem>,
+    private val loginRepository: LoginRepository,
+) : ViewModel() {
 
     private var _viewItems = MutableLiveData<List<ViewItem>>()
     val viewItems: LiveData<List<ViewItem>>
         get() = _viewItems
 
-    private var _validationError = MutableLiveData<Boolean>()
-    val validationError: LiveData<Boolean>
-        get() = _validationError
+    private var _validationStatus = MutableLiveData<Boolean>()
+    val validationStatus: LiveData<Boolean>
+        get() = _validationStatus
+
+    private var _loginStatus = MutableLiveData<Boolean>()
+    val loginStatus: LiveData<Boolean>
+        get() = _loginStatus
 
     fun setUp() {
         _viewItems.value = viewItemList
@@ -25,7 +34,20 @@ class LoginViewModel (val viewItemList: List<ViewItem>) : ViewModel() {
             ?.filter { it.validate() }
             ?.count() ?: 0
 
-        _validationError.value = count == 2
+        _validationStatus.value = count == 2
+    }
+
+    fun loginUser() {
+        loginRepository.loginUser()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { _ ->
+                val username = _viewItems.value?.filterIsInstance<InputViewItem>()
+                    ?.first { it.id == "username" }
+                    ?.value
+                UserSingleton.username = username ?: ""
+                _loginStatus.value = true
+            }
     }
 
 
