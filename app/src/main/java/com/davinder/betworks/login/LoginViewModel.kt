@@ -40,13 +40,12 @@ class LoginViewModel(
     fun loginUser() {
         loginRepository.loginUser()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe { _ ->
                 val username = _viewItems.value?.filterIsInstance<InputViewItem>()
                     ?.first { it.id == "username" }
                     ?.value
                 UserSingleton.username = username ?: ""
-                _loginStatus.value = true
+                _loginStatus.postValue(true)
             }
     }
 
