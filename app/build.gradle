@@ -9,6 +9,11 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 
 android {
+    useLibrary 'android.test.runner'
+
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
+
     compileSdkVersion 29
 
     defaultConfig {
@@ -18,7 +23,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.davinder.betworks.HiltTestRunner"
     }
 
     buildTypes {
@@ -92,6 +97,12 @@ dependencies {
     testImplementation "io.mockk:mockk:1.10.4"
 
     testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    def fragment_version = "1.2.5"
+    debugImplementation("androidx.fragment:fragment-testing:$fragment_version") {
+        exclude group: 'androidx.test', module: 'monitor'
+    }
+    debugImplementation("androidx.fragment:fragment-ktx:$fragment_version")
 }
 
 kapt {
