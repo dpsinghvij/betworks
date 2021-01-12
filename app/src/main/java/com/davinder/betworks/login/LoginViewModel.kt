@@ -1,10 +1,12 @@
 package com.davinder.betworks.login
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.davinder.betworks.views.ViewItem
 import com.davinder.betworks.views.ViewItem.InputViewItem
+import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -37,7 +39,9 @@ class LoginViewModel(
         _validationStatus.value = count == 2
     }
 
+    @SuppressLint("CheckResult")
     fun loginUser() {
+        EspressoIdlingResource.increment()
         loginRepository.loginUser()
             .subscribeOn(Schedulers.io())
             .subscribe { _ ->
@@ -46,6 +50,7 @@ class LoginViewModel(
                     ?.value
                 UserSingleton.username = username ?: ""
                 _loginStatus.postValue(true)
+                EspressoIdlingResource.decrement()
             }
     }
 
