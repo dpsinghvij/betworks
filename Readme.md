@@ -6,3 +6,4 @@ Salient Features
 - RxJava is used as per the requirement
 - Login views are displayed in a recyclerview
 
+![Demo](/screenshots/betworks.gif)
