@@ -11,7 +11,10 @@
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_userScreenFragment"
-            app:destination="@id/userScreenFragment" />
+            app:destination="@id/userScreenFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/userScreenFragment"
