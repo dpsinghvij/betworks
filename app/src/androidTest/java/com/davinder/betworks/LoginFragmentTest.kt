@@ -60,7 +60,7 @@ class LoginFragmentTest {
     }
 
     @Test
-    fun testErrorIsThrown_correctInput() {
+    fun testNextScreenIntentFired_correctInput() {
         val mockNavController = mock(NavController::class.java)
 
         launchFragmentInHiltContainer<LoginFragment>(null, R.style.Theme_Betworks) {
