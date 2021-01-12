@@ -21,7 +21,6 @@ class UserFragmentTest {
     @Before
     fun init() {
         hiltRule.inject()
-
     }
 
     @Test
