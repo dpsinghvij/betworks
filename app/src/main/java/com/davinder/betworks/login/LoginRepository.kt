@@ -5,5 +5,8 @@ import io.reactivex.Single
 
 interface LoginRepository {
 
+    /**
+     * Logs user In
+     */
     fun loginUser(): Single<UserLoginResult>
 }

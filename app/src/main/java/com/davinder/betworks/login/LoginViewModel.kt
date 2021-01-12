@@ -35,7 +35,7 @@ class LoginViewModel(
             ?.filter { it.validate() }
             ?.count() ?: 0
 
-        _validationStatus.value = count == 2
+        _validationStatus.value = count == VALID_INPUTS
     }
 
     @SuppressLint("CheckResult")
@@ -53,5 +53,7 @@ class LoginViewModel(
             }
     }
 
-
+    companion object {
+        private const val VALID_INPUTS = 2
+    }
 }
