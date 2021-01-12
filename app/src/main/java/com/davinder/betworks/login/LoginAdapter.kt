@@ -8,7 +8,10 @@ import com.davinder.betworks.R
 import com.davinder.betworks.views.InputEditText
 import com.davinder.betworks.views.ViewItem
 
-class LoginAdapter(var viewItems: List<ViewItem>, private val buttonClick: () -> Unit) :
+/**
+ * Adapter to hold the models that contains view information
+ */
+class LoginAdapter(private var viewItems: List<ViewItem>, private val buttonClick: () -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

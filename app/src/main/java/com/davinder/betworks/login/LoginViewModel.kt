@@ -4,10 +4,9 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.davinder.betworks.utils.EspressoIdlingResource
 import com.davinder.betworks.views.ViewItem
 import com.davinder.betworks.views.ViewItem.InputViewItem
-import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class LoginViewModel(

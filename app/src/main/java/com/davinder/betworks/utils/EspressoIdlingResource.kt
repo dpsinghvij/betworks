@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.architecture.blueprints.todoapp.util
+package com.davinder.betworks.utils
 
 import androidx.test.espresso.IdlingResource
-import com.davinder.betworks.utils.SimpleCountingIdlingResource
 
 /**
  * Contains a static reference to [IdlingResource], only available in the 'mock' build type.

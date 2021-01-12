@@ -6,7 +6,6 @@ import com.davinder.betworks.views.ViewItem
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.reactivex.Observable
 import io.reactivex.Single
 import junit.framework.Assert.*
 import org.junit.Before
@@ -76,7 +75,8 @@ class LoginViewModelTest {
     fun `test loginUser when valid input`() {
         val loginViewModel = createViewModel("abcde", "dfda1")
 
-        every { repository.loginUser() } returns Single.just(UserLoginResult(isSuccessful = true, username = "abcde"))
+        every { repository.loginUser() } returns Single.just(UserLoginResult(isSuccessful = true,
+            username = "abcde"))
 
         loginViewModel.loginUser()
 

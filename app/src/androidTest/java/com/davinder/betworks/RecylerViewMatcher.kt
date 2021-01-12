@@ -28,7 +28,7 @@ class RecyclerViewMatcher(private val recyclerViewId: Int) {
                         resources!!.getResourceName(recyclerViewId)
                     } catch (var4: NotFoundException) {
                         String.format("%s (resource name not found)",
-                            *arrayOf<Any>(Integer.valueOf(recyclerViewId)))
+                            Integer.valueOf(recyclerViewId))
                     }
                 }
                 description.appendText("with id: $idDescription")

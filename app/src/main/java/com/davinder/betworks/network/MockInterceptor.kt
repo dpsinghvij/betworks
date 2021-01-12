@@ -1,8 +1,9 @@
 package com.davinder.betworks.network
 
-import okhttp3.*
-import java.net.InetAddress
-import java.net.InetSocketAddress
+import okhttp3.Interceptor
+import okhttp3.MediaType
+import okhttp3.Response
+import okhttp3.ResponseBody
 
 
 class MockInterceptor: Interceptor {

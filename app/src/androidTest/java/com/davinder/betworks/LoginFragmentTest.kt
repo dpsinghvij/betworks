@@ -10,7 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import com.davinder.betworks.RecyclerViewMatcher.Companion.withRecyclerView
 import com.davinder.betworks.login.LoginFragment
 import com.davinder.betworks.login.LoginFragmentDirections
-import com.example.android.architecture.blueprints.todoapp.util.EspressoIdlingResource
+import com.davinder.betworks.utils.EspressoIdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.After
