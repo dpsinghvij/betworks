@@ -1,5 +1,5 @@
 ## Demo
-<img src=/screenshots/betworks.gif width=40%/>
+<img src=/screenshots/betworks.gif width=25%/>
 
 ## Salient Features
 - MVVM architecture is used. 
